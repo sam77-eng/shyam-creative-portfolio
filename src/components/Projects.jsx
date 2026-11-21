@@ -12,7 +12,8 @@ import {
   ArrowUpRight,
   Eye,
   ShieldCheck,
-  Code
+  Code,
+  Sparkles
 } from 'lucide-react';
 
 const PROJECTS = [
@@ -20,20 +21,29 @@ const PROJECTS = [
     id: 'fashion-hub',
     num: '01',
     title: 'FASHION HUB',
-    category: 'E-COMMERCE CONCEPT',
-    badge: 'CONCEPT PROTOTYPE',
-    description: 'A minimalist luxury e-commerce experience tailored for modern fashion boutiques and designer apparel.',
-    features: ['Curated Product Catalogue', 'Interactive Filter System', 'Rich Product Detail View', 'Slide-over Cart & Checkout Flow'],
-    stack: ['React', 'Tailwind CSS', 'State Architecture', 'Responsive UI'],
+    category: '3D E-COMMERCE EXPERIENCE',
+    badge: 'INDEPENDENT DEMO',
+    projectType: 'Independent Concept / Demo Project',
+    liveUrl: 'https://fashion-hub-demo.vercel.app/',
+    description: 'An immersive fashion e-commerce experience blending Indian heritage with international contemporary fashion. Featuring cinematic 3D visuals, elegant product collections and an interactive shopping experience.',
+    features: [
+      'Indian Heritage × International Contemporary Fashion',
+      'Cinematic 3D Visuals & Fabric Simulation Engine',
+      'Interactive 3D Product & Runway Experience',
+      'Fluid Motion Architecture Built with GSAP & Three.js'
+    ],
+    stack: ['React', 'Three.js', 'React Three Fiber', 'GSAP', 'Tailwind CSS'],
     accentColor: 'from-purple-600 to-pink-600',
     icon: ShoppingBag,
     previewVisual: {
-      type: 'storefront',
-      headline: 'AURA COLLECTION 2025',
+      type: 'fashion-3d',
+      headline: 'fashion-hub-demo.vercel.app',
+      editorialTitle: 'FASHION HUB',
+      editorialSubtitle: 'INDIAN HERITAGE × CONTEMPORARY COUTURE',
+      tagline: 'Cinematic 3D Visuals & Interactive Runway',
       items: [
-        { name: 'Oversized Cyber Knit', price: '₹4,899', tag: 'NEW' },
-        { name: 'Monochrome Trench', price: '₹9,499', tag: 'POPULAR' },
-        { name: 'Structural Leather Tote', price: '₹6,200', tag: 'LIMITED' }
+        { name: 'Varanasi Silk Zari Kurti', price: '₹18,500', tag: '3D SILK' },
+        { name: 'Sculptural Ivory Blazer', price: '₹14,200', tag: 'WEBGL' }
       ]
     }
   },
@@ -136,6 +146,8 @@ export default function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {PROJECTS.map((project) => {
             const Icon = project.icon;
+            const isFashionHub = project.id === 'fashion-hub';
+
             return (
               <div
                 key={project.id}
@@ -149,7 +161,12 @@ export default function Projects() {
                       {project.category}
                     </span>
                   </div>
-                  <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-purple-950/60 text-purple-300 border border-purple-800/40 font-semibold tracking-wider">
+                  <span className={`text-[9px] font-mono px-2.5 py-0.5 rounded-full font-semibold tracking-wider uppercase inline-flex items-center gap-1.5 ${
+                    project.liveUrl 
+                      ? 'bg-purple-950/80 text-purple-200 border border-purple-500/40 shadow-[0_0_12px_rgba(168,85,247,0.25)]' 
+                      : 'bg-purple-950/60 text-purple-300 border border-purple-800/40'
+                  }`}>
+                    {project.liveUrl && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />}
                     {project.badge}
                   </span>
                 </div>
@@ -170,23 +187,123 @@ export default function Projects() {
                     <Icon className="w-3.5 h-3.5 text-purple-400" />
                   </div>
 
-                  {/* Mock Visual Content */}
-                  <div className="space-y-2">
-                    {project.previewVisual.items.map((item, i) => (
-                      <div 
-                        key={i} 
-                        className="flex items-center justify-between p-2 rounded-lg bg-[#0F0F1A] border border-white/[0.04] text-[11px] font-mono"
-                      >
-                        <span className="text-slate-200">{item.name}</span>
-                        <div className="flex items-center gap-2">
-                          <span className="text-purple-300 font-semibold">{item.price}</span>
-                          <span className="text-[9px] bg-purple-900/40 text-purple-300 px-1.5 py-0.5 rounded font-bold">
-                            {item.tag}
+                  {/* Visual Content: Custom Editorial Silk for Fashion Hub vs Standard Grid */}
+                  {project.previewVisual.type === 'fashion-3d' ? (
+                    <div className="relative rounded-xl overflow-hidden border border-amber-500/20 bg-gradient-to-br from-[#2D0612] via-[#1B040B] to-[#0B0105] p-3.5 min-h-[128px] flex flex-col justify-between">
+                      {/* Flowing 3D Silk Fabric SVG Background */}
+                      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                        <svg
+                          viewBox="0 0 400 160"
+                          className="w-full h-full object-cover opacity-80 group-hover:opacity-95 transition-opacity duration-500"
+                          preserveAspectRatio="xMidYMid slice"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <defs>
+                            <linearGradient id="fhSilkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stopColor="#7E122C" stopOpacity="0.8" />
+                              <stop offset="50%" stopColor="#3B0715" stopOpacity="0.6" />
+                              <stop offset="100%" stopColor="#140207" stopOpacity="0.9" />
+                            </linearGradient>
+                            <linearGradient id="fhGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stopColor="#F5E4A8" />
+                              <stop offset="45%" stopColor="#D4AF37" />
+                              <stop offset="100%" stopColor="#99751A" />
+                            </linearGradient>
+                            <linearGradient id="fhIvoryGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                              <stop offset="0%" stopColor="#FAF7F2" stopOpacity="0.85" />
+                              <stop offset="50%" stopColor="#E4D7C8" stopOpacity="0.5" />
+                              <stop offset="100%" stopColor="#F5EBE6" stopOpacity="0.75" />
+                            </linearGradient>
+                            <filter id="fhGlow" x="-20%" y="-20%" width="140%" height="140%">
+                              <feGaussianBlur stdDeviation="6" result="blur" />
+                              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                          </defs>
+
+                          {/* Ambient Gold & Ruby Glows */}
+                          <circle cx="340" cy="20" r="75" fill="#D4AF37" opacity="0.18" filter="url(#fhGlow)" />
+                          <circle cx="60" cy="120" r="85" fill="#9B1537" opacity="0.25" filter="url(#fhGlow)" />
+
+                          {/* 3D Flowing Silk Waves */}
+                          <path
+                            d="M-20,110 C80,60 140,135 220,85 C300,40 350,115 420,65 L420,170 L-20,170 Z"
+                            fill="url(#fhSilkGrad)"
+                          />
+                          <path
+                            d="M-30,75 C90,135 150,30 250,85 C330,125 380,50 430,90 L430,170 L-30,170 Z"
+                            fill="url(#fhIvoryGrad)"
+                            opacity="0.3"
+                          />
+                          {/* Antique Gold Silk Thread Accent Curve */}
+                          <path
+                            d="M-10,92 C90,40 160,120 250,70 C320,30 375,80 420,48"
+                            fill="none"
+                            stroke="url(#fhGoldGrad)"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            opacity="0.9"
+                          />
+                          <path
+                            d="M-10,99 C90,47 160,127 250,77 C320,37 375,87 420,55"
+                            fill="none"
+                            stroke="url(#fhGoldGrad)"
+                            strokeWidth="1"
+                            strokeDasharray="4 3"
+                            opacity="0.6"
+                          />
+                        </svg>
+                      </div>
+
+                      {/* Editorial Top Line */}
+                      <div className="relative z-10 flex items-center justify-between">
+                        <div>
+                          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#D4AF37] font-semibold block">
+                            {project.previewVisual.editorialSubtitle}
+                          </span>
+                          <span className="font-display font-black text-xs text-[#FDFBF7] tracking-wider drop-shadow-sm">
+                            {project.previewVisual.editorialTitle}
                           </span>
                         </div>
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/60 border border-amber-500/30 text-[9px] font-mono text-[#F5E4A8] backdrop-blur-md">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                          <span>3D LIVE RUNWAY</span>
+                        </span>
                       </div>
-                    ))}
-                  </div>
+
+                      {/* Editorial Showcase Chips */}
+                      <div className="relative z-10 grid grid-cols-2 gap-2 mt-3">
+                        {project.previewVisual.items.map((item, i) => (
+                          <div 
+                            key={i} 
+                            className="flex items-center justify-between p-1.5 px-2 rounded-lg bg-black/50 border border-white/[0.08] backdrop-blur-md text-[10px] font-mono"
+                          >
+                            <span className="text-[#FDFBF7] truncate">{item.name}</span>
+                            <span className="text-[#D4AF37] font-bold text-[9px] ml-1 bg-[#D4AF37]/10 px-1 py-0.5 rounded">
+                              {item.tag}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    /* Mock Visual Content for standard cards */
+                    <div className="space-y-2">
+                      {project.previewVisual.items.map((item, i) => (
+                        <div 
+                          key={i} 
+                          className="flex items-center justify-between p-2 rounded-lg bg-[#0F0F1A] border border-white/[0.04] text-[11px] font-mono"
+                        >
+                          <span className="text-slate-200">{item.name}</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-purple-300 font-semibold">{item.price}</span>
+                            <span className="text-[9px] bg-purple-900/40 text-purple-300 px-1.5 py-0.5 rounded font-bold">
+                              {item.tag}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Gradient overlay on hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
@@ -225,15 +342,37 @@ export default function Projects() {
                 </div>
 
                 {/* Bottom Action Bar */}
-                <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                  <button
-                    onClick={() => setSelectedProject(project)}
-                    className="inline-flex items-center gap-2 text-xs font-mono text-purple-400 hover:text-purple-300 font-bold group/btn"
-                  >
-                    <Eye className="w-3.5 h-3.5" />
-                    <span>EXPLORE CONCEPT SPEC</span>
-                    <ArrowUpRight className="w-3 h-3 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                  </button>
+                <div className="pt-4 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-3">
+                  {project.liveUrl ? (
+                    <div className="flex items-center gap-3">
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white font-mono text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-glow-purple hover:shadow-[0_0_25px_rgba(139,92,246,0.6)] group/live"
+                      >
+                        <span>VIEW LIVE DEMO</span>
+                        <ArrowUpRight className="w-4 h-4 group-hover/live:translate-x-0.5 group-hover/live:-translate-y-0.5 transition-transform" />
+                      </a>
+                      <button
+                        onClick={() => setSelectedProject(project)}
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-purple-400 hover:text-purple-300 font-bold transition-colors py-2 px-2"
+                        title="View Architecture Specification"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>SPEC</span>
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => setSelectedProject(project)}
+                      className="inline-flex items-center gap-2 text-xs font-mono text-purple-400 hover:text-purple-300 font-bold group/btn"
+                    >
+                      <Eye className="w-3.5 h-3.5" />
+                      <span>EXPLORE CONCEPT SPEC</span>
+                      <ArrowUpRight className="w-3 h-3 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                    </button>
+                  )}
                   <span className="text-[10px] font-mono text-slate-400">Warangal, IN</span>
                 </div>
 
@@ -266,8 +405,9 @@ export default function Projects() {
               <h3 className="font-display font-black text-3xl text-white mb-3">
                 {selectedProject.title}
               </h3>
-              <div className="inline-block px-2.5 py-1 rounded-full bg-purple-950/60 text-purple-300 border border-purple-700/50 text-[10px] font-mono font-bold mb-4">
-                {selectedProject.badge}
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-purple-950/60 text-purple-300 border border-purple-700/50 text-[10px] font-mono font-bold mb-4">
+                {selectedProject.liveUrl && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />}
+                <span>{selectedProject.badge}</span>
               </div>
 
               <p className="text-sm text-[#A3A3B5] leading-relaxed mb-6">
@@ -304,14 +444,27 @@ export default function Projects() {
               </div>
 
               {/* Modal Footer Actions */}
-              <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between">
-                <a
-                  href="#contact"
-                  onClick={() => setSelectedProject(null)}
-                  className="px-6 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-violet-600 text-white font-mono text-xs font-bold tracking-wider uppercase shadow-glow-purple"
-                >
-                  Commission Similar Project
-                </a>
+              <div className="pt-4 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center gap-3">
+                  {selectedProject.liveUrl && (
+                    <a
+                      href={selectedProject.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white font-mono text-xs font-bold tracking-wider uppercase shadow-glow-purple transition-all"
+                    >
+                      <span>VIEW LIVE DEMO</span>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </a>
+                  )}
+                  <a
+                    href="#contact"
+                    onClick={() => setSelectedProject(null)}
+                    className="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/15 text-white font-mono text-xs font-bold tracking-wider uppercase transition-colors"
+                  >
+                    Commission Similar Project
+                  </a>
+                </div>
                 <button
                   onClick={() => setSelectedProject(null)}
                   className="text-xs font-mono text-[#A3A3B5] hover:text-white"
