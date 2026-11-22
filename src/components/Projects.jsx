@@ -48,23 +48,34 @@ const PROJECTS = [
     }
   },
   {
-    id: 'restaurant-experience',
+    id: 'the-spice-court',
     num: '02',
-    title: 'RESTAURANT EXPERIENCE',
-    category: 'HOSPITALITY WEB CONCEPT',
-    badge: 'CONCEPT PROTOTYPE',
-    description: 'An atmospheric digital presence for premium dining establishments, cafes, and artisanal bistros.',
-    features: ['Categorized Digital Menu', 'High-Res Food Gallery Grid', 'Interactive Location Map & Hours', 'Online Reservation Enquiry'],
-    stack: ['HTML5', 'Modern CSS', 'JavaScript', 'Responsive Media'],
+    title: 'THE SPICE COURT',
+    subtitle: 'Premium 3D Restaurant & Café Experience',
+    category: '3D RESTAURANT & CAFÉ',
+    badge: 'INDEPENDENT DEMO',
+    projectType: 'Independent Concept / Demo Project',
+    liveUrl: 'https://the-spice-court.vercel.app/',
+    buttonText: 'View Live Demo',
+    description: 'A premium Indian restaurant and café website combining traditional Indian luxury with modern digital experiences. Features an immersive 3D hero, elegant menu browsing, signature dishes, gallery, café experience, and interactive reservation demo.',
+    features: [
+      'Immersive 3D Hero & Atmospheric Dining World',
+      'Traditional Indian Luxury Meets Modern Digital UI',
+      'Interactive Menu Browsing & Signature Dishes Showcase',
+      'Curated Café Experience & Real-Time Reservation Flow'
+    ],
+    stack: ['React', 'Vite', 'JavaScript', 'Tailwind CSS', 'Three.js', 'React Three Fiber', 'GSAP'],
     accentColor: 'from-amber-600 to-purple-600',
     icon: Utensils,
     previewVisual: {
-      type: 'restaurant',
-      headline: 'THE VELVET TABLE',
+      type: 'spice-court-3d',
+      headline: 'the-spice-court.vercel.app',
+      editorialTitle: 'THE SPICE COURT',
+      editorialSubtitle: 'TRADITIONAL INDIAN LUXURY × MODERN 3D',
+      tagline: 'Premium 3D Restaurant & Café Experience',
       items: [
-        { name: 'Truffle Glazed Wild Mushrooms', price: '₹850', tag: 'CHEF PICK' },
-        { name: 'Smoked Saffron Risotto', price: '₹920', tag: 'SIGNATURE' },
-        { name: 'Artisan Dark Cacao Sphere', price: '₹550', tag: 'DESSERT' }
+        { name: 'Awadhi Saffron Dum Biryani', price: '₹950', tag: '3D DISH' },
+        { name: 'Royal Malai Kofta & Vark', price: '₹820', tag: 'SIGNATURE' }
       ]
     }
   },
@@ -187,7 +198,7 @@ export default function Projects() {
                     <Icon className="w-3.5 h-3.5 text-purple-400" />
                   </div>
 
-                  {/* Visual Content: Custom Editorial Silk for Fashion Hub vs Standard Grid */}
+                  {/* Visual Content: Custom Editorial Silk for Fashion Hub vs Custom 3D for Spice Court vs Standard Grid */}
                   {project.previewVisual.type === 'fashion-3d' ? (
                     <div className="relative rounded-xl overflow-hidden border border-amber-500/20 bg-gradient-to-br from-[#2D0612] via-[#1B040B] to-[#0B0105] p-3.5 min-h-[128px] flex flex-col justify-between">
                       {/* Flowing 3D Silk Fabric SVG Background */}
@@ -285,6 +296,121 @@ export default function Projects() {
                         ))}
                       </div>
                     </div>
+                  ) : project.previewVisual.type === 'spice-court-3d' ? (
+                    <div className="relative rounded-xl overflow-hidden border border-amber-500/25 bg-gradient-to-br from-[#241208] via-[#160B05] to-[#0A0502] p-3.5 min-h-[128px] flex flex-col justify-between">
+                      {/* Royal Indian Architectural Arch & Warm Ambient Embers SVG Background */}
+                      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                        <svg
+                          viewBox="0 0 400 160"
+                          className="w-full h-full object-cover opacity-80 group-hover:opacity-95 transition-opacity duration-500"
+                          preserveAspectRatio="xMidYMid slice"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <defs>
+                            <linearGradient id="scWarmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stopColor="#8A3E15" stopOpacity="0.85" />
+                              <stop offset="50%" stopColor="#4A1E08" stopOpacity="0.65" />
+                              <stop offset="100%" stopColor="#180A04" stopOpacity="0.9" />
+                            </linearGradient>
+                            <linearGradient id="scGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stopColor="#FDE68A" />
+                              <stop offset="45%" stopColor="#D4AF37" />
+                              <stop offset="100%" stopColor="#92400E" />
+                            </linearGradient>
+                            <linearGradient id="scSaffronGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                              <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.8" />
+                              <stop offset="50%" stopColor="#EA580C" stopOpacity="0.5" />
+                              <stop offset="100%" stopColor="#FEF3C7" stopOpacity="0.75" />
+                            </linearGradient>
+                            <filter id="scGlow" x="-20%" y="-20%" width="140%" height="140%">
+                              <feGaussianBlur stdDeviation="6" result="blur" />
+                              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                          </defs>
+
+                          {/* Ambient Saffron & Gold Lighting Orbs */}
+                          <circle cx="340" cy="20" r="75" fill="#F59E0B" opacity="0.18" filter="url(#scGlow)" />
+                          <circle cx="60" cy="130" r="85" fill="#D97706" opacity="0.22" filter="url(#scGlow)" />
+
+                          {/* Royal Arch & Geometric Curves */}
+                          <path
+                            d="M-20,120 C70,75 130,135 210,90 C290,45 350,110 420,65 L420,170 L-20,170 Z"
+                            fill="url(#scWarmGrad)"
+                          />
+                          <path
+                            d="M-30,85 C80,140 150,35 245,85 C325,125 380,55 430,95 L430,170 L-30,170 Z"
+                            fill="url(#scSaffronGrad)"
+                            opacity="0.25"
+                          />
+                          {/* Antique Gold Architectural Foil Accent Curve */}
+                          <path
+                            d="M-10,95 C85,45 160,115 250,70 C325,32 375,82 420,50"
+                            fill="none"
+                            stroke="url(#scGoldGrad)"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            opacity="0.9"
+                          />
+                          <path
+                            d="M-10,102 C85,52 160,122 250,77 C325,39 375,89 420,57"
+                            fill="none"
+                            stroke="url(#scGoldGrad)"
+                            strokeWidth="1"
+                            strokeDasharray="4 3"
+                            opacity="0.6"
+                          />
+
+                          {/* Stylized Steam / Spice Flourish Curves */}
+                          <path
+                            d="M200,60 Q205,45 200,30 T202,15"
+                            fill="none"
+                            stroke="#FDE68A"
+                            strokeWidth="1.2"
+                            opacity="0.4"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M212,55 Q217,42 212,28 T214,16"
+                            fill="none"
+                            stroke="#FDE68A"
+                            strokeWidth="1"
+                            opacity="0.3"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </div>
+
+                      {/* Editorial Top Line */}
+                      <div className="relative z-10 flex items-center justify-between">
+                        <div>
+                          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#D4AF37] font-semibold block">
+                            {project.previewVisual.editorialSubtitle}
+                          </span>
+                          <span className="font-display font-black text-xs text-[#FDFBF7] tracking-wider drop-shadow-sm">
+                            {project.previewVisual.editorialTitle}
+                          </span>
+                        </div>
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/60 border border-amber-500/30 text-[9px] font-mono text-[#FDE68A] backdrop-blur-md">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                          <span>3D RESTAURANT DEMO</span>
+                        </span>
+                      </div>
+
+                      {/* Editorial Showcase Chips */}
+                      <div className="relative z-10 grid grid-cols-2 gap-2 mt-3">
+                        {project.previewVisual.items.map((item, i) => (
+                          <div 
+                            key={i} 
+                            className="flex items-center justify-between p-1.5 px-2 rounded-lg bg-black/50 border border-white/[0.08] backdrop-blur-md text-[10px] font-mono"
+                          >
+                            <span className="text-[#FDFBF7] truncate">{item.name}</span>
+                            <span className="text-amber-400 font-bold text-[9px] ml-1 bg-amber-500/10 px-1 py-0.5 rounded">
+                              {item.tag}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   ) : (
                     /* Mock Visual Content for standard cards */
                     <div className="space-y-2">
@@ -311,9 +437,14 @@ export default function Projects() {
 
                 {/* Project Details */}
                 <div>
-                  <h3 className="font-display font-black text-2xl text-white tracking-wide mb-2 group-hover:text-purple-300 transition-colors">
+                  <h3 className="font-display font-black text-2xl text-white tracking-wide mb-1 group-hover:text-purple-300 transition-colors">
                     {project.title}
                   </h3>
+                  {project.subtitle && (
+                    <p className="text-xs font-mono text-purple-400 font-semibold mb-2 tracking-wide">
+                      {project.subtitle}
+                    </p>
+                  )}
                   <p className="text-sm text-[#A3A3B5] leading-relaxed mb-5 font-normal">
                     {project.description}
                   </p>
@@ -351,7 +482,7 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white font-mono text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-glow-purple hover:shadow-[0_0_25px_rgba(139,92,246,0.6)] group/live"
                       >
-                        <span>VIEW LIVE DEMO</span>
+                        <span>{project.buttonText || 'VIEW LIVE DEMO'}</span>
                         <ArrowUpRight className="w-4 h-4 group-hover/live:translate-x-0.5 group-hover/live:-translate-y-0.5 transition-transform" />
                       </a>
                       <button
@@ -402,9 +533,14 @@ export default function Projects() {
                 <span className="font-mono text-xs text-purple-400 font-bold">{selectedProject.num} //</span>
                 <span className="text-xs font-mono text-[#A3A3B5]">{selectedProject.category}</span>
               </div>
-              <h3 className="font-display font-black text-3xl text-white mb-3">
+              <h3 className="font-display font-black text-3xl text-white mb-1">
                 {selectedProject.title}
               </h3>
+              {selectedProject.subtitle && (
+                <p className="text-xs font-mono text-purple-400 font-semibold mb-3">
+                  {selectedProject.subtitle}
+                </p>
+              )}
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-purple-950/60 text-purple-300 border border-purple-700/50 text-[10px] font-mono font-bold mb-4">
                 {selectedProject.liveUrl && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />}
                 <span>{selectedProject.badge}</span>
@@ -453,7 +589,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white font-mono text-xs font-bold tracking-wider uppercase shadow-glow-purple transition-all"
                     >
-                      <span>VIEW LIVE DEMO</span>
+                      <span>{selectedProject.buttonText || 'VIEW LIVE DEMO'}</span>
                       <ArrowUpRight className="w-4 h-4" />
                     </a>
                   )}
